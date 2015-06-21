@@ -1,6 +1,7 @@
 import xml.etree.ElementTree as ET
 import os, shutil
 import datetime
+import openpyxl
 tree = ET.parse('Meeting Plan Generator.xml')
 root = tree.getroot()
 
@@ -34,3 +35,19 @@ for plugin in root.findall('plugin'):
 os.mkdir(wednesdaysDate)
 tree.write(wednesdaysDate + '\Meeting Plan Generator 2.xml')
 shutil.copyfile('Meeting Planner.xlsx', wednesdaysDate + '\Meeting Planner.xlsx')
+
+yearwb = openpyxl.load_workbook('..\\2014 Lesson Plan.xlsx', data_only=True)
+calendarws = yearwb.get_sheet_by_name("Calendar")
+meetingDates = tuple(calendarws.iter_rows('A2:A39'))
+for meetingDate in meetingDates:
+    if meetingDate[0].value == nextWednesday:
+        break
+meetingDate = meetingDate[0]
+nextWednesdayRow = meetingDate.row
+nextWednesdayLesson = calendarws[('C' + str(nextWednesdayRow))].value
+
+plannerwb = openpyxl.load_workbook(wednesdaysDate + '\\Meeting Planner.xlsx')
+meetingws = plannerwb.get_sheet_by_name('Meeting Overview')
+meetingws['E10'] = nextWednesdayLesson
+meetingws['G1'] = nextWednesday
+plannerwb.save(wednesdaysDate + '\\Meeting Planner2.xlsx')
