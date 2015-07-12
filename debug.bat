@@ -1,0 +1,1 @@
+c:\python33\python.exe c:\Python33\lib\idlelib\idle.pyw mpg.py
