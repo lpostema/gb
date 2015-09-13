@@ -15,7 +15,7 @@
   <plugin class="org.pdfsam.plugin.merge.GUI.MergeMainGUI" name="Merge/Extract">
     <filelist>
       <file name="C:\Users\lpostema\Google Drive\GB\Meetings\change-date\Meeting Planner.pdf" pageselection="1-2"/>
-      <file name="C:\Users\lpostema\Google Drive\GB\2014_Gopher_Buddies_Bible_Study.pdf" pageselection="69-74"/>
+      <file name="C:\Users\lpostema\Google Drive\GB\2015-16 Gopher Buddies Bible Study.pdf" pageselection="change-page"/>
     </filelist>
     <destination value="C:\Users\lpostema\Google Drive\GB\Meetings\change-date\Full Meeting Plan.pdf"/>
     <overwrite value="true"/>
